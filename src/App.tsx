@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 type Duration = 5 | 15 | 30 | 60
@@ -80,13 +80,6 @@ function App() {
   const level = Math.floor(xp / 100) + 1
   const levelProgress = xp % 100
 
-  const currentOptions = useMemo(() => {
-    if (!selectedDuration) return []
-    const options = activities[selectedDuration]
-    return selectedCategory === 'Surprise me'
-      ? options
-      : options.filter((item) => item.category === selectedCategory)
-  }, [selectedDuration, selectedCategory])
 
   const pickActivity = (duration: Duration, category = selectedCategory) => {
     const base = activities[duration]
